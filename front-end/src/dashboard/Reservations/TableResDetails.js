@@ -1,18 +1,22 @@
 import React from "react";
 import TableRow from "./TableRow";
 
-function TableResDetails({ reservations, date }) {
+function TableResDetails({ reservations, date, loadDashboard }) {
   //loop over reservations
   //with each index, render TableRow component(which is only one row of data)
-  const rows = reservations.map((reservation, index) => (
-    <TableRow reservation={reservation} index={index} />
+  const rows = reservations.map((reservation) => (
+    <TableRow
+      reservation={reservation}
+      loadDashboard={loadDashboard}
+      key={reservation.reservation_id}
+    />
   ));
 
   return (
     <React.Fragment>
       <table className="tableResDetails table">
         <thead>
-          <tr>
+          <tr className="reservations-categories-row">
             <th className="border-top-0">#</th>
             <th className="border-top-0">Name</th>
             <th className="border-top-0">Phone</th>
@@ -22,7 +26,7 @@ function TableResDetails({ reservations, date }) {
             <th className="border-top-0">Status</th>
           </tr>
         </thead>
-        <tbody>{rows}</tbody>
+        <tbody className="reservations-body">{rows}</tbody>
       </table>
     </React.Fragment>
   );

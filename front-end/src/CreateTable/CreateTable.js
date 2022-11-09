@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { createNewTable } from "../utils/api";
+import ErrorAlert from "../layout/ErrorAlert";
 
 function CreateTable() {
   const history = useHistory();
   const initialFormState = {
     table_name: "",
-    capacity: 1,
+    capacity: 0,
   };
 
   const [formData, setFormData] = useState({ ...initialFormState });
+
+  const [tableError, setTableError] = useState(null);
 
   const handleChange = ({ target }) => {
     setFormData({
@@ -18,21 +21,27 @@ function CreateTable() {
     });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Submitted", formData);
+    const abortController = new AbortController();
+    setTableError(null);
     const formatNewTable = {
       ...formData,
       capacity: Number(formData.capacity),
     };
-    const abortController = new AbortController();
-    await createNewTable(formatNewTable, abortController.signal);
-    history.push(`/dashboard`);
+    createNewTable(formatNewTable, abortController.signal)
+      .then(() => {
+        history.push(`/dashboard`);
+      })
+      .catch(setTableError);
     return () => abortController.abort();
   };
 
+  const cancelButtonClick = () => history.go(-1);
+
   return (
     <React.Fragment>
+      <ErrorAlert error={tableError} />
       <div className="col">
         <main>
           <h1>Create Reservation</h1>
@@ -47,10 +56,10 @@ function CreateTable() {
                     name="table_name"
                     id="table_name"
                     minLength="2"
-                    required
                     placeholder="Table name"
                     onChange={handleChange}
                     value={formData.table_name}
+                    required
                   />
                 </div>
 
@@ -61,21 +70,25 @@ function CreateTable() {
                     className="form-control"
                     name="capacity"
                     id="capacity"
-                    required
                     min="1"
                     onChange={handleChange}
                     value={formData.capacity}
+                    required
                   />
                 </div>
               </div>
               <br />
-              <button type="submit" className="btn btn-primary">
+              <button
+                style={{ backgroundColor: "#7B6A96", color: "white" }}
+                type="submit"
+                className="btn btn-submit"
+              >
                 Submit
               </button>
               <button
                 type="button"
                 className="btn btn-secondary"
-                onClick={() => history.goBack()}
+                onClick={cancelButtonClick}
               >
                 Cancel
               </button>
