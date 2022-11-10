@@ -34,6 +34,7 @@ function CreateNewReservation() {
     const reservationDate = new Date(
       `${newReservation.reservation_date}T${newReservation.reservation_time}:00`
     );
+
     const [hours, minutes] = newReservation.reservation_time.split(":");
     newReservation.people = Number(newReservation.people);
 
@@ -106,12 +107,12 @@ function CreateNewReservation() {
                 <div className="form-group col">
                   <label htmlFor="mobile_number">Mobile Number</label>
                   <input
-                    type="text"
+                    type="tel"
                     className="form-control"
                     name="mobile_number"
                     id="mobile_number"
                     required
-                    placeholder="Mobile Number"
+                    placeholder="000-000-0000"
                     onChange={handleChange}
                     value={newReservation.mobile_number}
                   />

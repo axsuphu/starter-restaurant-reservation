@@ -48,12 +48,12 @@ function EditReservationForm({
               <div className="form-group col">
                 <label htmlFor="mobile_number">Mobile Number</label>
                 <input
-                  type="text"
+                  type="tel"
                   className="form-control"
                   name="mobile_number"
                   id="mobile_number"
                   required
-                  placeholder="Mobile Number"
+                  placeholder="000-000-0000"
                   onChange={handleChange}
                   value={mobile_number}
                 />
