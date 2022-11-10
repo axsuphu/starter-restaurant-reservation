@@ -2,7 +2,7 @@ import React from "react";
 import TableRow from "./TableRow";
 
 function TableList({ tables, loadDashboard }) {
-  const rows = tables.map((table, index) => (
+  const rows = tables.map((table) => (
     <TableRow
       table={table}
       loadDashboard={loadDashboard}

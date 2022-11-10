@@ -2,10 +2,6 @@ import React from "react";
 import { finishedTable } from "../../utils/api";
 
 function TableRow({ table, loadDashboard }) {
-  //upon clicking finish
-  //make a DELETE request within utils/api
-  //you want to loadDashboard after DELETE promise has resolved so that the state of tables are different
-
   const handleFinishClick = () => {
     if (
       window.confirm(

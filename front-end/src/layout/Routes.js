@@ -8,7 +8,7 @@ import CreateTable from "../CreateTable/CreateTable";
 import AssignResToTable from "../AssignResToTable/AssignResToTable";
 import Search from "../Search/Search";
 import EditReservation from "../Edit/EditReservation";
-import CreateReservation from "../CreateReservation/CreateReservation";
+import CreateNewReservation from "../CreateResPage/CreateNewReservation";
 import useQuery from "../utils/useQuery";
 /**
  * Defines all the routes for the application.
@@ -33,7 +33,7 @@ function Routes() {
         <EditReservation />
       </Route>
       <Route exact={true} path="/reservations/new">
-        <CreateReservation />
+        <CreateNewReservation />
       </Route>
       <Route exact={true} path="/reservations">
         <Redirect to={"/dashboard"} />
