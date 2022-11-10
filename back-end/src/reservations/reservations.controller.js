@@ -105,7 +105,7 @@ function timeIsValid(timeString) {
 
 function dateNotTuesday(dateString) {
   const date = new Date(dateString);
-  return date.getDay() !== 2;
+  return date.getUTCDay() !== 2;
 }
 
 function dateNotInPast(dateString, timeString) {
