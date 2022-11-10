@@ -91,7 +91,7 @@ async function reservation_idExists(req, res, next) {
   });
 }
 
-async function isAlreadySeated(req, res, next) {
+function isAlreadySeated(req, res, next) {
   const reservation = res.locals.reservation;
   if (reservation.status === "seated") {
     return next({ status: 400, message: `reservation is already seated` });
@@ -105,7 +105,6 @@ async function hasCapacityAndAvailable(req, res, next) {
   const selectedTable = await tablesService.read(table_id);
   //reservation_idExists already assigned await reservationsService.read(reservation_id) to res.locals.reservation so we do not need to write that again
   const reservation = res.locals.reservation;
-
   //if there are more people than the table can seat,
   if (reservation.people > selectedTable.capacity) {
     //return 400 + msg

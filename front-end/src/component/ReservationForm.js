@@ -1,15 +1,10 @@
 import React from "react";
 
-function EditReservationForm({
+function ReservationForm({
   handleChange,
   handleSubmit,
   handleCancel,
-  first_name,
-  last_name,
-  mobile_number,
-  reservation_date,
-  reservation_time,
-  people,
+  reservation,
 }) {
   return (
     <div className="col">
@@ -29,7 +24,7 @@ function EditReservationForm({
                   required
                   placeholder="First name"
                   onChange={handleChange}
-                  value={first_name}
+                  value={reservation.first_name}
                 />
               </div>
               <div className="form-group col">
@@ -42,7 +37,7 @@ function EditReservationForm({
                   required
                   placeholder="Last Name"
                   onChange={handleChange}
-                  value={last_name}
+                  value={reservation.last_name}
                 />
               </div>
               <div className="form-group col">
@@ -55,7 +50,7 @@ function EditReservationForm({
                   required
                   placeholder="000-000-0000"
                   onChange={handleChange}
-                  value={mobile_number}
+                  value={reservation.mobile_number}
                 />
               </div>
             </div>
@@ -71,7 +66,7 @@ function EditReservationForm({
                   placeholder="yyyy-mm-dd"
                   pattern="\d{4}-\d{2}-\d{2}"
                   onChange={handleChange}
-                  value={reservation_date}
+                  value={reservation.reservation_date}
                 />
               </div>
               <div className="form-group col">
@@ -85,7 +80,7 @@ function EditReservationForm({
                   placeholder="09:20"
                   pattern="[0-9]{2}:[0-9]{2}"
                   onChange={handleChange}
-                  value={reservation_time}
+                  value={reservation.reservation_time}
                 />
               </div>
               <div className="form-group col">
@@ -98,7 +93,7 @@ function EditReservationForm({
                   required
                   min="1"
                   onChange={handleChange}
-                  value={people}
+                  value={reservation.people}
                 />
               </div>
             </div>
@@ -124,4 +119,4 @@ function EditReservationForm({
   );
 }
 
-export default EditReservationForm;
+export default ReservationForm;

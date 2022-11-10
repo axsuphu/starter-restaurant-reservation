@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router";
 import { editReservation, readReservation } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
-import EditReservationForm from "./EditForm";
+import ReservationForm from "../component/ReservationForm";
 
 function EditReservation() {
   const history = useHistory();
@@ -16,24 +16,24 @@ function EditReservation() {
     reservation_time: "",
     people: "",
   };
-  const [editFormData, setEditFormData] = useState({ ...initialFormState });
+  const [reservation, setReservation] = useState({ ...initialFormState });
 
   const [editError, setEditError] = useState([]);
 
   useEffect(loadReservation, [reservation_id]);
 
-  //calls readReservation for specific reservation_id, then sets editFormData to keys and values that were read
+  //calls readReservation for specific reservation_id, then sets reservation to keys and values that were read
   function loadReservation() {
     const abortController = new AbortController();
     readReservation(reservation_id, abortController.signal)
-      .then(setEditFormData)
+      .then(setReservation)
       .catch(setEditError);
     return () => abortController.abort();
   }
 
   const handleChange = ({ target }) => {
-    setEditFormData({
-      ...editFormData,
+    setReservation({
+      ...reservation,
       [target.name]: target.value,
     });
   };
@@ -44,8 +44,8 @@ function EditReservation() {
     const abortController = new AbortController();
 
     const formattedReservation = {
-      ...editFormData,
-      people: Number(editFormData.people),
+      ...reservation,
+      people: Number(reservation.people),
     };
 
     //formats the time so it includes the :00 at the end
@@ -104,16 +104,11 @@ function EditReservation() {
   return (
     <React.Fragment>
       {displayErrors}
-      <EditReservationForm
+      <ReservationForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         handleCancel={handleCancel}
-        first_name={editFormData.first_name}
-        last_name={editFormData.last_name}
-        mobile_number={editFormData.mobile_number}
-        reservation_date={editFormData.reservation_date}
-        reservation_time={editFormData.reservation_time}
-        people={editFormData.people}
+        reservation={reservation}
       />
     </React.Fragment>
   );

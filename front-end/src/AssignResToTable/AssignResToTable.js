@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router";
 import ErrorAlert from "../layout/ErrorAlert";
 
-const {
-  //  listReservations,
-  listTables,
-  seatReservation,
-} = require("../utils/api");
+const { listTables, seatReservation } = require("../utils/api");
 
 function AssignResToTable() {
   const { reservation_id } = useParams();
@@ -36,20 +32,16 @@ function AssignResToTable() {
     setSeat(event.target.value);
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const abortController = new AbortController();
-    await seatReservation(seat, reservation_id, abortController.signal);
-    history.push(`/dashboard`);
+
+    seatReservation(seat, reservation_id, abortController.signal)
+      .then(() => history.push(`/dashboard`))
+      .catch((err) => setTablesError(err));
+
     return () => abortController.abort();
   };
-
-  //list the table that has the reservation_id
-  //   selectOptions will be each table's table_id
-
-  //receive seat reservation by prop
-  //filter tables for reservation id === null && seat > reservation party
-  //use .map to create data set for list of tables
 
   return (
     <React.Fragment>
