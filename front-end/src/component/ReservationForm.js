@@ -47,6 +47,7 @@ function ReservationForm({
                   className="form-control"
                   name="mobile_number"
                   id="mobile_number"
+                  pattern="[0-9-]+"
                   required
                   placeholder="000-000-0000"
                   onChange={handleChange}
