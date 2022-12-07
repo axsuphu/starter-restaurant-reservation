@@ -1,9 +1,9 @@
 import React from "react";
-import TableRow from "./TableRow";
+import TableListRow from "./TableListRow";
 
 function TableList({ tables, loadDashboard }) {
   const rows = tables.map((table) => (
-    <TableRow
+    <TableListRow
       table={table}
       loadDashboard={loadDashboard}
       key={table.table_id}

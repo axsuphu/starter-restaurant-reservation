@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { cancelReservation } from "../../utils/api";
 
-function TableRow({ reservation, loadDashboard }) {
+function TableResDetailsRow({ reservation, loadDashboard }) {
   const [cancelError, setCancelError] = useState(null);
   const {
     reservation_id,
@@ -85,4 +85,4 @@ function TableRow({ reservation, loadDashboard }) {
   );
 }
 
-export default TableRow;
+export default TableResDetailsRow;

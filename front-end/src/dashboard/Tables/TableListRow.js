@@ -1,7 +1,7 @@
 import React from "react";
 import { finishedTable } from "../../utils/api";
 
-function TableRow({ table, loadDashboard }) {
+function TableListRow({ table, loadDashboard }) {
   const handleFinishClick = () => {
     if (
       window.confirm(
@@ -41,4 +41,4 @@ function TableRow({ table, loadDashboard }) {
   );
 }
 
-export default TableRow;
+export default TableListRow;
