@@ -1,5 +1,10 @@
 body {
-  background-image: url("tic-tac-toe.png");
+  background-image: url("../assets/tic-tac-toe.png");
+}
+
+.Logo {
+  width: 330px;
+  height: 330px;
 }
 
 .side-bar {
@@ -9,6 +14,11 @@ body {
   flex-direction: column;
   justify-content: center;
   font-family: "Courier New", Courier, monospace;
+  padding: 50px 50px 50px 50px;
+}
+
+.sidebar-brand-text {
+  font-size: 30px;
 }
 
 h1 {
