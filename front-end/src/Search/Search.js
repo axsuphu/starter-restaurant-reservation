@@ -4,6 +4,7 @@ import { listReservations } from "../utils/api";
 import SearchForm from "./SearchForm";
 import SearchResults from "./SearchResults";
 import ErrorAlert from "../layout/ErrorAlert";
+import NoReservationsFoundBanner from "../assets/No-Reservations-Found-Banner.png";
 
 function Search() {
   //have an initial form state before filling in the information
@@ -39,18 +40,26 @@ function Search() {
 
   return (
     <React.Fragment>
-      <SearchForm
-        mobile_number={searchFormData.mobile_number}
-        handleChange={handleChange}
-        searchFormHandler={searchFormHandler}
-      />
-      {reservations.length === 0 ? (
-        <h4 className="no-reservations-found">No reservations found</h4>
-      ) : (
-        <SearchResults reservations={reservations} />
-      )}
+      <h1>Search Reservations</h1>
+      <div className="search-container">
+        <SearchForm
+          mobile_number={searchFormData.mobile_number}
+          handleChange={handleChange}
+          searchFormHandler={searchFormHandler}
+        />
+        <br />
+        {reservations.length === 0 ? (
+          <img
+            src={NoReservationsFoundBanner}
+            alt="No Reservations Found Banner"
+            className="shadow p-3 mb-5 bg-body rounded NoReservationsFoundBanner"
+          />
+        ) : (
+          <SearchResults reservations={reservations} />
+        )}
 
-      <ErrorAlert error={searchError} />
+        <ErrorAlert error={searchError} />
+      </div>
     </React.Fragment>
   );
 }

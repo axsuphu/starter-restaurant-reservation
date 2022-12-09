@@ -3,8 +3,8 @@ body {
 }
 
 .Logo {
-  width: 330px;
-  height: 330px;
+  width: 60%;
+  border-radius: 8px;
 }
 
 .side-bar {
@@ -12,9 +12,9 @@ body {
   min-width: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   font-family: "Courier New", Courier, monospace;
-  padding: 50px 50px 50px 50px;
+  padding: 100px 0px 100px 0px;
 }
 
 .sidebar-brand-text {
@@ -23,10 +23,10 @@ body {
 
 h1 {
   font-family: "Courier New", Courier, monospace;
-  font-size: 50px;
+  font-size: 70px;
   color: #c86779;
   font-weight: bolder;
-  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: rgb(69, 16, 16);
   display: flex;
   justify-content: center;
@@ -35,7 +35,7 @@ h1 {
 
 h2 {
   font-family: monospace;
-  font-size: 25px;
+  font-size: 28px;
   color: #c2334d;
   font-weight: bold;
 }
@@ -53,16 +53,31 @@ h2 {
   font-family: monospace;
 }
 
-.table-list-container,
-.reservation-list-container {
-  background-color: rgb(247, 243, 243);
-  padding: 20px 20px 0px 20px;
-  border: 3px #5c919a dashed;
-}
-
-.table-and-reservation-containers {
+.btn-search-form-submit {
   display: flex;
   flex-direction: column;
+}
+
+.ReservationsBanner,
+.TablesBanner,
+.NoReservationsFoundBanner,
+.FoundBanner {
+  width: 84%;
+}
+
+.table-list-container,
+.reservation-list-container,
+.search-form {
+  background-color: rgb(247, 243, 243);
+  padding: 20px 20px 0px 20px;
+}
+
+.table-and-reservation-containers,
+.search-container,
+.search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .reservations-categories-row,

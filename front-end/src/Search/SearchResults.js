@@ -1,3 +1,5 @@
+import FoundBanner from "../assets/Found-Banner.png";
+
 function SearchResults({ reservations }) {
   let row = reservations.map((reservation) => {
     return (
@@ -15,6 +17,11 @@ function SearchResults({ reservations }) {
 
   return (
     <div>
+      <img
+        src={FoundBanner}
+        alt="Found Banner"
+        className="shadow p-3 mb-5 bg-body rounded FoundBanner"
+      />
       <table className="searchList table">
         <thead>
           <tr>

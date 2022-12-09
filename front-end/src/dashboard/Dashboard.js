@@ -5,6 +5,8 @@ import ErrorAlert from "../layout/ErrorAlert";
 import TableResDetails from "./Reservations/TableResDetails";
 import { previous, today, next } from "../utils/date-time";
 import TableList from "./Tables/TableList";
+import ReservationsBanner from "../assets/Reservations-Banner.png";
+import TablesBanner from "../assets/Tables-Banner.png";
 import "../layout/Layout.css";
 
 /**
@@ -82,6 +84,12 @@ function Dashboard({ date }) {
       </div>
       <br />
       <div className="table-and-reservation-containers">
+        <img
+          src={ReservationsBanner}
+          alt="Reservations Banner"
+          className="shadow p-3 mb-5 bg-body rounded ReservationsBanner"
+        />
+
         <div className="reservation-list-container">
           <TableResDetails
             reservations={reservations}
@@ -90,6 +98,15 @@ function Dashboard({ date }) {
           />
         </div>
         <br />
+        <br />
+        <br />
+
+        <img
+          src={TablesBanner}
+          alt="Tables Banner"
+          className="shadow p-3 mb-5 bg-body rounded TablesBanner"
+        />
+
         <div className="table-list-container">
           <TableList tables={tables} loadDashboard={loadDashboard} />
         </div>
