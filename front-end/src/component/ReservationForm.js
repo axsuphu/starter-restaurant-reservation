@@ -9,8 +9,6 @@ function ReservationForm({
   return (
     <div className="col">
       <main>
-        <h1>Edit Reservation</h1>
-
         <form onSubmit={handleSubmit}>
           <fieldset>
             <div className="row">

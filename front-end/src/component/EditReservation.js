@@ -104,6 +104,7 @@ function EditReservation() {
   return (
     <React.Fragment>
       {displayErrors}
+      <h1>Edit Reservation</h1>
       <ReservationForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
