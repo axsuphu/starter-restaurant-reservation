@@ -69,6 +69,7 @@ function CreateNewReservation() {
   let displayErrors = reservationErrors.map((error) => (
     <ErrorAlert key={error.message} error={error} />
   ));
+
   const handleCancel = (event) => history.go(-1);
 
   return (

@@ -162,12 +162,6 @@ function hasValidValues(req, res, next) {
       message: "The restaurant is closed on Tuesday",
     });
   }
-  if (!dateNotInPast(reservation_date, reservation_time)) {
-    return next({
-      status: 400,
-      message: "You must do reservation for future date or time",
-    });
-  }
   if (!reservationEligibleTime(reservation_time)) {
     return next({
       status: 400,
